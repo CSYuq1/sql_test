@@ -1,0 +1,3 @@
+D:/code/sql_test/cmake-build-debug/CMakeFiles/sql_test.dir
+D:/code/sql_test/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/code/sql_test/cmake-build-debug/CMakeFiles/rebuild_cache.dir
