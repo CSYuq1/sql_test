@@ -4,6 +4,9 @@
 #include"Sql_read.h"
 using namespace std;
 
+/*
+ * aaaaaaaaaaa
+ */
 int main() {
     // 1. 初始化连接环境
     MYSQL *mysql = mysql_init(nullptr);//初始化连接对象
