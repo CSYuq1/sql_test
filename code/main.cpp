@@ -1,7 +1,7 @@
 #include <iostream>
 #include <mysql.h>
 #include"Sql_print.h"
-#include"Sql_read.h"
+#include"sql_access.h"
 using namespace std;
 
 /*
@@ -40,7 +40,7 @@ int main() {
         printf("mysql_store_result() 失败了, 原因: %s\n", mysql_error(mysql));
         return -1;
     }
-    auto *rd =new Sql_read;
+    auto *rd =new sql_access;
     rd->All_read(res);
     rd->print();
     // 5. 得到结果集中的列数

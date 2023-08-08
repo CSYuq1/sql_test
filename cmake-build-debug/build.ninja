@@ -63,8 +63,8 @@ build CMakeFiles/sql_test.dir/code/Sql_print.cpp.obj: CXX_COMPILER__sql_test_uns
   OBJECT_DIR = CMakeFiles\sql_test.dir
   OBJECT_FILE_DIR = CMakeFiles\sql_test.dir\code
 
-build CMakeFiles/sql_test.dir/code/Sql_read.cpp.obj: CXX_COMPILER__sql_test_unscanned_Debug D$:/code/sql_test/code/Sql_read.cpp || cmake_object_order_depends_target_sql_test
-  DEP_FILE = CMakeFiles\sql_test.dir\code\Sql_read.cpp.obj.d
+build CMakeFiles/sql_test.dir/code/sql_access.cpp.obj: CXX_COMPILER__sql_test_unscanned_Debug D$:/code/sql_test/code/sql_access.cpp || cmake_object_order_depends_target_sql_test
+  DEP_FILE = CMakeFiles\sql_test.dir\code\sql_access.cpp.obj.d
   FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
   INCLUDES = -I"C:/Program Files/MySQL/MySQL Server 8.0/include"
   OBJECT_DIR = CMakeFiles\sql_test.dir
@@ -78,7 +78,7 @@ build CMakeFiles/sql_test.dir/code/Sql_read.cpp.obj: CXX_COMPILER__sql_test_unsc
 #############################################
 # Link the executable sql_test.exe
 
-build sql_test.exe: CXX_EXECUTABLE_LINKER__sql_test_Debug CMakeFiles/sql_test.dir/code/main.cpp.obj CMakeFiles/sql_test.dir/code/Sql_print.cpp.obj CMakeFiles/sql_test.dir/code/Sql_read.cpp.obj
+build sql_test.exe: CXX_EXECUTABLE_LINKER__sql_test_Debug CMakeFiles/sql_test.dir/code/main.cpp.obj CMakeFiles/sql_test.dir/code/Sql_print.cpp.obj CMakeFiles/sql_test.dir/code/sql_access.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -llibmysql  -lmysql  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -LC:/PROGRA~1/MySQL/MYSQLS~1.0/lib

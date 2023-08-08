@@ -9,7 +9,7 @@
 #define SQL_TEST_SQL_READ_H
 using namespace std;
 
-class Sql_read {
+class sql_access {
 
     class sql_row {
         unsigned int id;//主键

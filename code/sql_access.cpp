@@ -1,8 +1,8 @@
 // Created by lenovo on 2023/8/4.
 #include <iostream>
-#include "Sql_read.h"
+#include "sql_access.h"
 
-int Sql_read::All_read(MYSQL_RES *res) {
+int sql_access::All_read(MYSQL_RES *res) {
     // unsigned int num = mysql_num_fields(res);
     MYSQL_ROW row;
     rows.reserve(mysql_num_rows(res));
@@ -21,18 +21,18 @@ int Sql_read::All_read(MYSQL_RES *res) {
     return 0;
 }
 
-vector<Sql_read::sql_row> &Sql_read::getSqlRows() {
+vector<sql_access::sql_row> &sql_access::getSqlRows() {
     return rows;
 }
 
-void Sql_read::print() {
+void sql_access::print() {
     for (auto &row: rows) {
         row.print();
     }
 }
 
-Sql_read::sql_row::sql_row(unsigned int id, char *deviceId, char *deviceDesc, char *resGroup, char *resDesc, char *dept,
-                           char *routingId, char *operationId, char *duration, char *syncState) {
+sql_access::sql_row::sql_row(unsigned int id, char *deviceId, char *deviceDesc, char *resGroup, char *resDesc, char *dept,
+                             char *routingId, char *operationId, char *duration, char *syncState) {
     this->id = id;
     strcpy(this->device_id, deviceId);
     strcpy(this->device_desc, deviceDesc);
@@ -45,7 +45,7 @@ Sql_read::sql_row::sql_row(unsigned int id, char *deviceId, char *deviceDesc, ch
     strcpy(this->sync_state, syncState);
 }
 
-void Sql_read::sql_row::print() {
+void sql_access::sql_row::print() {
     printf("%d\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", id,
            device_id,
            device_desc,
