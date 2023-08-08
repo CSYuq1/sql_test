@@ -36,15 +36,15 @@ public:
 
 /*
     6. 得到所有列的名字, 并且输出
-    unsigned int num = mysql_num_fields(res);
-   fields = mysql_fetch_fields(res);
+    unsigned int num = mysql_num_fields(DEFAULT_RES);
+   fields = mysql_fetch_fields(DEFAULT_RES);
    for (int i = 0; i < num; ++i)
    printf("%s\t\t", fields[i].name);
    printf("\n");
 
 
  7. 遍历结果集中所有的行
-    while ((row = mysql_fetch_row(res)) != NULL) {
+    while ((row = mysql_fetch_row(DEFAULT_RES)) != NULL) {
     将当前行中的每一列信息读出
     for (int i = 0; i < num; ++i) {
     printf("%s\t\t", row[i]);

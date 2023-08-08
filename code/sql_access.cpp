@@ -3,7 +3,7 @@
 #include "sql_access.h"
 
 int sql_access::All_read(MYSQL_RES *res) {
-    // unsigned int num = mysql_num_fields(res);
+    // unsigned int num = mysql_num_fields(DEFAULT_RES);
     MYSQL_ROW row;
     rows.reserve(mysql_num_rows(res));
     while ((row = mysql_fetch_row(res)) != nullptr) {
@@ -21,6 +21,14 @@ int sql_access::All_read(MYSQL_RES *res) {
     return 0;
 }
 
+int sql_access::ALL_read() {
+    MYSQL_RES *res;
+
+    if ((res = mysql_store_result(conn)) == nullptr)
+
+        return 0;
+}
+
 vector<sql_access::sql_row> &sql_access::getSqlRows() {
     return rows;
 }
@@ -31,7 +39,14 @@ void sql_access::print() {
     }
 }
 
-sql_access::sql_row::sql_row(unsigned int id, char *deviceId, char *deviceDesc, char *resGroup, char *resDesc, char *dept,
+sql_access::sql_access(MYSQL *newconn) : conn(newconn) {
+    mysql_query(this->conn, DEFAULT_QUERY);
+    this->DEFAULT_RES = mysql_store_result(conn);
+}
+
+
+sql_access::sql_row::sql_row(unsigned int id, char *deviceId, char *deviceDesc, char *resGroup, char *resDesc,
+                             char *dept,
                              char *routingId, char *operationId, char *duration, char *syncState) {
     this->id = id;
     strcpy(this->device_id, deviceId);

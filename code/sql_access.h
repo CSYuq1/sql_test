@@ -10,7 +10,6 @@
 using namespace std;
 
 class sql_access {
-
     class sql_row {
         unsigned int id;//主键
         char device_id[51];//设备id
@@ -29,8 +28,13 @@ class sql_access {
         void print();
     };
 
+    CONST CHAR *DEFAULT_QUERY = "select * from read_test";
+    MYSQL *conn;
+    MYSQL_RES *DEFAULT_RES;
     vector<sql_row> rows;//将读取的row存入此处
 public:
+    sql_access(MYSQL *newconn);
+
     vector<sql_row> &getSqlRows();
 
     void print();
@@ -39,6 +43,7 @@ public:
      * 将result中所有的row读入到vector中
      */
     int All_read(MYSQL_RES *result);
+    int ALL_read();
 };
 
 #endif //SQL_TEST_SQL_READ_H
