@@ -3,10 +3,9 @@
 #include"Sql_print.h"
 #include"sql_access.h"
 using namespace std;
-
-
 int main() {
     // 1. 初始化连接环境
+
     MYSQL *conn = mysql_init(nullptr);//初始化连接对象
     if (conn == nullptr) {
         printf("mysql_init() error\n");
