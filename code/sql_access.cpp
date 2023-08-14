@@ -40,24 +40,60 @@ int sql_access::All_write(vector<sql_row> input_rows) {
         return -1;
     }
     if (mysql_stmt_prepare(stmt, DEFAULT_WRITE_PREPARE, strlen(DEFAULT_WRITE_PREPARE)) != 0) {
-        printf( "Failed to prepare statement: Error: %s\n", mysql_stmt_error(stmt));
+        printf("Failed to prepare statement: Error: %s\n", mysql_stmt_error(stmt));
         mysql_stmt_close(stmt);
         mysql_close(conn);
         return -1;
-        MYSQL_BIND bindParams[10];
-        memset(bindParams, 0, sizeof(bindParams));
-
-        unsigned int id;
-        char param2[50];
-
-        bindParams[0].buffer_type = MYSQL_TYPE_INT24;
-        bindParams[0].buffer = (int  *)&id;
-
-        bindParams[1].buffer_type = MYSQL_TYPE_VARCHAR;
-        bindParams[1].buffer = (void *)param2;
-        bindParams[1].buffer_length = sizeof(param2);
-
     }
+    MYSQL_BIND bindParams[10];
+    memset(bindParams, 0, sizeof(bindParams));
+    for (auto row: input_rows) {
+        unsigned int id;
+        bindParams[0].buffer_type = MYSQL_TYPE_LONG;
+        bindParams[0].buffer = (void *) &id;
+        //char *device_id;//设备id
+        bindParams[1].buffer = (void *) row.getDeviceId();
+        bindParams[1].buffer_length = sizeof(row.getDeviceId());
+        bindParams[1].buffer_type = MYSQL_TYPE_VARCHAR;
+        //char *device_desc;//设备描述
+        bindParams[2].buffer = (void *) row.getDeviceDesc();
+        bindParams[2].buffer_length = sizeof(row.getDeviceDesc());
+        bindParams[2].buffer_type = MYSQL_TYPE_VARCHAR;
+        //char *res_group;//组
+        bindParams[3].buffer = (void *) row.getResGroup();
+        bindParams[3].buffer_length = sizeof(row.getResGroup());
+        bindParams[3].buffer_type = MYSQL_TYPE_VARCHAR;
+        //char *res_desc;//组描述
+        bindParams[4].buffer = (void *) row.getResDesc();
+        bindParams[4].buffer_length = sizeof(row.getResDesc());
+        bindParams[4].buffer_type = MYSQL_TYPE_VARCHAR;
+        //char *dept;//部门
+        bindParams[5].buffer = (void *)row.getDept();
+        bindParams[5].buffer_length = sizeof(row.getDept());
+        bindParams[5].buffer_type = MYSQL_TYPE_VARCHAR;
+        //char *routing_id;//工艺id
+        bindParams[6].buffer = (void *)row.getRoutingId();
+        bindParams[6].buffer_length = sizeof(row.getRoutingId());
+        bindParams[6].buffer_type = MYSQL_TYPE_VARCHAR;
+        // char *operation_id;//工序id
+        bindParams[7].buffer = (void *)row.getOperationId();
+        bindParams[7].buffer_length = sizeof(row.getOperationId());
+        bindParams[7].buffer_type = MYSQL_TYPE_VARCHAR;
+        //char *duration;//时长
+
+        //char *sync_state;//同步状态
+        /*
+        vector<char *> fields{row.device_id, device_desc, res_group, res_desc, dept, routing_id, operation_id, duration,
+                              sync_state};
+        for (int i = 0; i < fields.size(); i++) {//同种类型的字段统一初始化， bindParams[0]已近用于初始化字段id
+            bindParams[i + 1].buffer = (void *) fields[i];
+            bindParams[i + 1].buffer_length = sizeof(fields[i]);
+            bindParams[i + 1].buffer_type = MYSQL_TYPE_VARCHAR;
+        }
+         */
+    }
+
+
     return 0;
 }
 
@@ -106,6 +142,46 @@ sql_access::sql_row::sql_row(unsigned int id, char *deviceId, char *deviceDesc, 
     strcpy(this->operation_id, operationId);
     strcpy(this->duration, duration);
     strcpy(this->sync_state, syncState);
+}
+
+unsigned int sql_access::sql_row::getId() const {
+    return id;
+}
+
+const char *sql_access::sql_row::getDeviceId() const {
+    return device_id;
+}
+
+const char *sql_access::sql_row::getDeviceDesc() const {
+    return device_desc;
+}
+
+const char *sql_access::sql_row::getResGroup() const {
+    return res_group;
+}
+
+const char *sql_access::sql_row::getResDesc() const {
+    return res_desc;
+}
+
+const char *sql_access::sql_row::getDept() const {
+    return dept;
+}
+
+const char *sql_access::sql_row::getRoutingId() const {
+    return routing_id;
+}
+
+const char *sql_access::sql_row::getOperationId() const {
+    return operation_id;
+}
+
+const char *sql_access::sql_row::getDuration() const {
+    return duration;
+}
+
+const char *sql_access::sql_row::getSyncState() const {
+    return sync_state;
 }
 
 
