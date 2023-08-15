@@ -40,11 +40,6 @@ int main() {
     auto *rd =new sql_access(conn);
     rd->All_read(res);
     rd->print();
-    // 5. 得到结果集中的列数
- //   Sql_print::print_all_field(DEFAULT_RES);
- //   Sql_print::print_all_rows(DEFAULT_RES);
-
-    //  释放资源 - 结果集
     mysql_free_result(res);
     mysql_close(conn);
     return 0;

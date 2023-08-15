@@ -38,6 +38,11 @@ protected:
         const char *getSyncState() const;
 
     private:
+        CONST unsigned int row_num=10 ;//记录字段的数量
+    public:
+        const unsigned int getRowNum() const;
+
+    private:
         unsigned int id;//主键
         char device_id[256];//设备id
         char device_desc[256];//设备描述
