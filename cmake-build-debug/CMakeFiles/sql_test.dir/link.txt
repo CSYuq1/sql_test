@@ -1,0 +1,3 @@
+C:\Users\yanyu\AppData\Local\Programs\CLion\bin\cmake\win\x64\bin\cmake.exe -E rm -f CMakeFiles\sql_test.dir/objects.a
+C:\Users\yanyu\AppData\Local\Programs\CLion\bin\mingw\bin\ar.exe qc CMakeFiles\sql_test.dir/objects.a @CMakeFiles\sql_test.dir\objects1.rsp
+C:\Users\yanyu\AppData\Local\Programs\CLion\bin\mingw\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\sql_test.dir/objects.a -Wl,--no-whole-archive -o sql_test.exe -Wl,--out-implib,libsql_test.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\sql_test.dir\linkLibs.rsp
