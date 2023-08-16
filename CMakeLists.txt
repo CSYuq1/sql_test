@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.25)
 project(sql_test)
 set(CMAKE_CXX_STANDARD 23)
-include_directories(C:\\Program\ Files\\MySQL\\MySQL\ Server\ 8.0\\include)
-link_directories(C:\\Program\ Files\\MySQL\\MySQL\ Server\ 8.0\\lib)
+include_directories(C:\\Users\\yanyu\\CLionProjects\\sql_test\\include)
+link_directories(C:\\Users\\yanyu\\CLionProjects\\sql_test\\lib)
 link_libraries(libmysql)
 add_executable(sql_test code/main.cpp
         code/Sql_print.cpp

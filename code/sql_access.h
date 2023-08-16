@@ -44,15 +44,15 @@ protected:
 
     private:
         unsigned int id;//主键
-        char device_id[256];//设备id
-        char device_desc[256];//设备描述
-        char res_group[256];//组
-        char res_desc[256];//组描述
-        char dept[256];//部门
-        char routing_id[256];//工艺id
-        char operation_id[256];//工序id
-        char duration[256];//时长
-        char sync_state[256];//同步状态
+        char device_id[255];//设备id
+        char device_desc[255];//设备描述
+        char res_group[255];//组
+        char res_desc[255];//组描述
+        char dept[255];//部门
+        char routing_id[255];//工艺id
+        char operation_id[255];//工序id
+        char duration[255];//时长
+        char sync_state[255];//同步状态
     public:
         sql_row(unsigned int id, char *deviceId, char *deviceDesc, char *resGroup, char *resDesc, char *dept,
                 char *routingId, char *operationId, char *duration, char *syncState);
@@ -64,7 +64,7 @@ protected:
     vector<sql_row> rows;//将读取的row存入此处
 public:
     CONST CHAR *DEFAULT_READ_QUERY = "SELECT * FROM read_test";
-    CONST CHAR *DEFAULT_WRITE_PREPARE = "INSERT INTO write_test (id, device_id,device_desc,res_group,res_desc,dept,routing_id,operation_id,duration,sync_state) VALUES ( ? , ? , ? , ? , ? , ?, ? , ? , ? , ? )";//10个参数的预处理语句
+    CONST CHAR *DEFAULT_WRITE_PREPARE = "INSERT INTO write_test (id,device_id,device_desc,res_group,res_desc,dept,routing_id,operation_id,duration,sync_state) VALUES ( ? , ? , ? , ? , ? , ?, ? , ? , ? , ? )";//10个参数的预处理语句
 
     sql_access(MYSQL *newconn);
 

@@ -59,8 +59,9 @@ int sql_access::All_write(vector<sql_row> input_rows) {
     bindParams[8].buffer_type = MYSQL_TYPE_VARCHAR;
     bindParams[9].buffer_type = MYSQL_TYPE_VARCHAR;
     for (auto row: input_rows) {
-        unsigned int  id=row.getId();
+        unsigned int id = row.getId();
         bindParams[0].buffer = (void *) &id;
+        bindParams[0].buffer_length = sizeof(row.getId());
         //char *device_id;//设备id
         bindParams[1].buffer = (void *) row.getDeviceId();
         bindParams[1].buffer_length = sizeof(row.getDeviceId());
@@ -89,27 +90,19 @@ int sql_access::All_write(vector<sql_row> input_rows) {
         bindParams[9].buffer = (void *) row.getSyncState();
         bindParams[9].buffer_length = sizeof(row.getSyncState());
         if (mysql_stmt_bind_param(stmt, bindParams) != 0) {
-            printf( "Failed to bind parameters in row : Error: %s\n", mysql_stmt_error(stmt));
+            printf("Failed to bind parameters in row : Error: %s\n", mysql_stmt_error(stmt));
             mysql_stmt_close(stmt);
             mysql_close(conn);
             return 1;
         }
 
         if (mysql_stmt_execute(stmt) != 0) {
-            printf( "Failed to execute statement in row : Error: %s\n", mysql_stmt_error(stmt));
+            printf("Failed to execute statement in row : Error: %s\n", mysql_stmt_error(stmt));
             mysql_stmt_close(stmt);
             mysql_close(conn);
             return 1;
         }
-        /*
-        vector<char *> fields{row.device_id, device_desc, res_group, res_desc, dept, routing_id, operation_id, duration,
-                              sync_state};
-        for (int i = 0; i < fields.size(); i++) {//同种类型的字段统一初始化， bindParams[0]已近用于初始化字段id
-            bindParams[i + 1].buffer = (void *) fields[i];
-            bindParams[i + 1].buffer_length = sizeof(fields[i]);
-            bindParams[i + 1].buffer_type = MYSQL_TYPE_VARCHAR;
-        }
-         */
+
     }
     return 0;
 }

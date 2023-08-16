@@ -23,7 +23,9 @@ int main() {
         printf("mysql_real_connect() error\n");
         return -1;
     }
-
+    //printf("mysql api使用的默认编码: %s\n", mysql_character_set_name(conn));
+    //mysql_set_character_set(conn, "utf4mb8");
+    //printf("mysql api使用的默认编码: %s\n", mysql_character_set_name(conn));
     // 3. 执行一个sql语句
 //    const char *query = "select * from read_test";//输入需要执行的语句
 //    if (0 != mysql_query(conn, query)) {// 执行这个sql语句
