@@ -10,7 +10,8 @@ int sql_access::All_read(MYSQL_RES *res) {
     MYSQL_ROW row;
     rows.reserve(mysql_num_rows(res));
     while ((row = mysql_fetch_row(res)) != nullptr) {
-        rows.emplace_back(*row[0],
+
+        rows.emplace_back(stoi(row[0]),
                           row[1],
                           row[2],
                           row[3],
@@ -58,8 +59,7 @@ int sql_access::All_write(vector<sql_row> input_rows) {
     bindParams[8].buffer_type = MYSQL_TYPE_VARCHAR;
     bindParams[9].buffer_type = MYSQL_TYPE_VARCHAR;
     for (auto row: input_rows) {
-        unsigned int id;
-
+        unsigned int  id=row.getId();
         bindParams[0].buffer = (void *) &id;
         //char *device_id;//设备id
         bindParams[1].buffer = (void *) row.getDeviceId();
@@ -136,6 +136,10 @@ void sql_access::sql_row::print() {
 sql_access::sql_access(MYSQL *newconn) : conn(newconn) {
     mysql_query(this->conn, DEFAULT_READ_QUERY);
     this->DEFAULT_RES = mysql_store_result(conn);
+}
+
+int sql_access::All_write() {
+    return All_write(this->getSqlRows());
 }
 
 

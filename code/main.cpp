@@ -25,22 +25,22 @@ int main() {
     }
 
     // 3. 执行一个sql语句
-    const char *query = "select * from read_test";//输入需要执行的语句
-    if (0 != mysql_query(conn, query)) {// 执行这个sql语句
-        printf("mysql_query() a失败了, 原因: %s\n", mysql_error(conn));
-        return -1;
-    }
+//    const char *query = "select * from read_test";//输入需要执行的语句
+//    if (0 != mysql_query(conn, query)) {// 执行这个sql语句
+//        printf("mysql_query() a失败了, 原因: %s\n", mysql_error(conn));
+//        return -1;
+//    }
 
     // 4. 取出结果集
-    MYSQL_RES *res = mysql_store_result(conn);
-    if (res == nullptr) {
-        printf("mysql_store_result() 失败了, 原因: %s\n", mysql_error(conn));
-        return -1;
-    }
-    auto *rd =new sql_access(conn);
-    rd->All_read(res);
-    rd->print();
-    mysql_free_result(res);
+//    MYSQL_RES *res = mysql_store_result(conn);
+//    if (res == nullptr) {
+//        printf("mysql_store_result() 失败了, 原因: %s\n", mysql_error(conn));
+//        return -1;
+//    }
+    auto *ac =new sql_access(conn);
+    ac->All_read();
+    ac->print();
+    ac->All_write();
     mysql_close(conn);
     return 0;
 }

@@ -150,7 +150,7 @@ CMakeFiles/sql_test.dir/code/main.cpp.obj: \
  C:/Users/yanyu/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ostream.tcc \
  C:/Users/yanyu/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/istream \
  C:/Users/yanyu/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/istream.tcc \
- C:/Program\ Files/MySQL/MySQL\ Server\ 8.0/include/mysql.h \
+ C:/PROGRA~1/MySQL/MYSQLS~1.0/include/mysql.h \
  C:/Users/yanyu/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdbool.h \
  C:/Users/yanyu/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdint.h \
  C:/Users/yanyu/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/stdint.h \
@@ -399,17 +399,17 @@ CMakeFiles/sql_test.dir/code/main.cpp.obj: \
  C:/Users/yanyu/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/winsvc.h \
  C:/Users/yanyu/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/mcx.h \
  C:/Users/yanyu/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/imm.h \
- C:/Program\ Files/MySQL/MySQL\ Server\ 8.0/include/field_types.h \
- C:/Program\ Files/MySQL/MySQL\ Server\ 8.0/include/my_list.h \
- C:/Program\ Files/MySQL/MySQL\ Server\ 8.0/include/mysql_com.h \
- C:/Program\ Files/MySQL/MySQL\ Server\ 8.0/include/my_command.h \
- C:/Program\ Files/MySQL/MySQL\ Server\ 8.0/include/my_compress.h \
- C:/Program\ Files/MySQL/MySQL\ Server\ 8.0/include/mysql/udf_registration_types.h \
- C:/Program\ Files/MySQL/MySQL\ Server\ 8.0/include/mysql/client_plugin.h \
- C:/Program\ Files/MySQL/MySQL\ Server\ 8.0/include/mysql/plugin_auth_common.h \
- C:/Program\ Files/MySQL/MySQL\ Server\ 8.0/include/mysql_version.h \
- C:/Program\ Files/MySQL/MySQL\ Server\ 8.0/include/mysql_time.h \
- C:/Program\ Files/MySQL/MySQL\ Server\ 8.0/include/errmsg.h \
+ C:/PROGRA~1/MySQL/MYSQLS~1.0/include/field_types.h \
+ C:/PROGRA~1/MySQL/MYSQLS~1.0/include/my_list.h \
+ C:/PROGRA~1/MySQL/MYSQLS~1.0/include/mysql_com.h \
+ C:/PROGRA~1/MySQL/MYSQLS~1.0/include/my_command.h \
+ C:/PROGRA~1/MySQL/MYSQLS~1.0/include/my_compress.h \
+ C:/PROGRA~1/MySQL/MYSQLS~1.0/include/mysql/udf_registration_types.h \
+ C:/PROGRA~1/MySQL/MYSQLS~1.0/include/mysql/client_plugin.h \
+ C:/PROGRA~1/MySQL/MYSQLS~1.0/include/mysql/plugin_auth_common.h \
+ C:/PROGRA~1/MySQL/MYSQLS~1.0/include/mysql_version.h \
+ C:/PROGRA~1/MySQL/MYSQLS~1.0/include/mysql_time.h \
+ C:/PROGRA~1/MySQL/MYSQLS~1.0/include/errmsg.h \
  C:\Users\yanyu\CLionProjects\sql_test\code\Sql_print.h \
  C:/Users/yanyu/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/vector \
  C:/Users/yanyu/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_uninitialized.h \

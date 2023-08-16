@@ -59,13 +59,12 @@ protected:
 
         void print();
     };
-
     MYSQL *conn;
     MYSQL_RES *DEFAULT_RES;
     vector<sql_row> rows;//将读取的row存入此处
 public:
-    CONST CHAR *DEFAULT_READ_QUERY = "select * from read_test";
-    CONST CHAR *DEFAULT_WRITE_PREPARE = "INSERT INTO write_test (id, device_id,device_desc,res_group,res_desc,dept,routingId,operationId,duration,syncState) VALUES ( ? , ? , ? , ? , ? , ?, ? , ? , ? , ? )";//10个参数的预处理语句
+    CONST CHAR *DEFAULT_READ_QUERY = "SELECT * FROM read_test";
+    CONST CHAR *DEFAULT_WRITE_PREPARE = "INSERT INTO write_test (id, device_id,device_desc,res_group,res_desc,dept,routing_id,operation_id,duration,sync_state) VALUES ( ? , ? , ? , ? , ? , ?, ? , ? , ? , ? )";//10个参数的预处理语句
 
     sql_access(MYSQL *newconn);
 
@@ -81,6 +80,7 @@ public:
     int All_read();
 
     int All_write(vector<sql_row> input_rows);
+    int All_write();
 };
 
 #endif //SQL_TEST_SQL_READ_H
