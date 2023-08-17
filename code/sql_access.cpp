@@ -49,15 +49,15 @@ int sql_access::All_write(vector<sql_row> input_rows) {
     MYSQL_BIND bindParams[10];
     memset(bindParams, 0, sizeof(bindParams));
     bindParams[0].buffer_type = MYSQL_TYPE_LONG;
-    bindParams[1].buffer_type = MYSQL_TYPE_VARCHAR;
-    bindParams[2].buffer_type = MYSQL_TYPE_VARCHAR;
-    bindParams[3].buffer_type = MYSQL_TYPE_VARCHAR;
-    bindParams[4].buffer_type = MYSQL_TYPE_VARCHAR;
-    bindParams[5].buffer_type = MYSQL_TYPE_VARCHAR;
-    bindParams[6].buffer_type = MYSQL_TYPE_VARCHAR;
-    bindParams[7].buffer_type = MYSQL_TYPE_VARCHAR;
-    bindParams[8].buffer_type = MYSQL_TYPE_VARCHAR;
-    bindParams[9].buffer_type = MYSQL_TYPE_VARCHAR;
+    bindParams[1].buffer_type = MYSQL_TYPE_STRING;
+    bindParams[2].buffer_type = MYSQL_TYPE_STRING;
+    bindParams[3].buffer_type = MYSQL_TYPE_STRING;
+    bindParams[4].buffer_type = MYSQL_TYPE_STRING;
+    bindParams[5].buffer_type = MYSQL_TYPE_STRING;
+    bindParams[6].buffer_type = MYSQL_TYPE_STRING;
+    bindParams[7].buffer_type = MYSQL_TYPE_STRING;
+    bindParams[8].buffer_type = MYSQL_TYPE_STRING;
+    bindParams[9].buffer_type = MYSQL_TYPE_STRING;
     for (auto row: input_rows) {
         unsigned int id = row.getId();
         bindParams[0].buffer = (void *) &id;
