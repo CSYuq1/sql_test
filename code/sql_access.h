@@ -17,25 +17,25 @@ class sql_access {
 protected:
     class sql_row {
     public:
-        unsigned int getId() const;
+        unsigned int getId() ;
 
-        const char *getDeviceId() const;
+        const char *getDeviceId() ;
 
-        const char *getDeviceDesc() const;
+        const char *getDeviceDesc() ;
 
-        const char *getResGroup() const;
+        const char *getResGroup() ;
 
-        const char *getResDesc() const;
+        const char *getResDesc() ;
 
-        const char *getDept() const;
+        const char *getDept() ;
 
-        const char *getRoutingId() const;
+        const char *getRoutingId() ;
 
-        const char *getOperationId() const;
+        const char *getOperationId() ;
 
-        const char *getDuration() const;
+        const char *getDuration() ;
 
-        const char *getSyncState() const;
+        const char *getSyncState() ;
 
     private:
         CONST unsigned int row_num=10 ;//记录字段的数量
@@ -64,7 +64,7 @@ protected:
     vector<sql_row> rows;//将读取的row存入此处
 public:
     CONST CHAR *DEFAULT_READ_QUERY = "SELECT * FROM read_test";
-    CONST CHAR *DEFAULT_WRITE_PREPARE = "INSERT INTO write_test (id,device_id,device_desc,res_group,res_desc,dept,routing_id,operation_id,duration,sync_state) VALUES ( ? , ? , ? , ? , ? , ?, ? , ? , ? , ? )";//10个参数的预处理语句
+    CONST CHAR *DEFAULT_WRITE_PREPARE = "INSERT INTO write_test (id,device_desc,res_group,res_desc,dept,routing_id,operation_id,duration,sync_state) VALUES (  ? , ? , ? , ? , ?, ? , ? , ? , ? )";//10个参数的预处理语句
 
     sql_access(MYSQL *newconn);
 
