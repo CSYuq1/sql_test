@@ -57,31 +57,31 @@ int sql_access::All_write(vector<sql_row> input_rows) {
         bindParams[0].buffer = (void *) &id;
         bindParams[0].buffer_length = sizeof(row.id);
         //char *device_id;//设备id
-        bindParams[1].buffer = (void *) row.device_id;
+        bindParams[1].buffer = (void *) row.device_id.c_str();
         bindParams[1].buffer_length = sizeof(row.device_id);
         //char *device_desc;//设备描述
-        bindParams[2].buffer = (void *) row.device_desc;
+        bindParams[2].buffer = (void *) row.device_desc.c_str();
         bindParams[2].buffer_length = sizeof(row.device_desc);
         //char *res_group;//组
-        bindParams[3].buffer = (void *) row.res_group;
+        bindParams[3].buffer = (void *) row.res_group.c_str();
         bindParams[3].buffer_length = sizeof(row.res_group);
         //char *res_desc;//组描述
-        bindParams[4].buffer = (void *) row.res_desc;
+        bindParams[4].buffer = (void *) row.res_desc.c_str();
         bindParams[4].buffer_length = sizeof(row.res_desc);
         //char *dept;//部门
-        bindParams[5].buffer = (void *) row.dept;
+        bindParams[5].buffer = (void *) row.dept.c_str();
         bindParams[5].buffer_length = sizeof(row.dept);
         //char *routing_id;//工艺id
-        bindParams[6].buffer = (void *) row.routing_id;
+        bindParams[6].buffer = (void *) row.routing_id.c_str();
         bindParams[6].buffer_length = sizeof(row.routing_id);
         // char *operation_id;//工序id
-        bindParams[7].buffer = (void *) row.operation_id;
+        bindParams[7].buffer = (void *) row.operation_id.c_str();
         bindParams[7].buffer_length = sizeof(row.operation_id);
         //char *duration;//时长
-        bindParams[8].buffer = (void *) row.duration;
+        bindParams[8].buffer = (void *) row.duration.c_str();
         bindParams[8].buffer_length = sizeof(row.duration);
         //char *sync_state;//同步状态
-        bindParams[9].buffer = (void *) row.sync_state;
+        bindParams[9].buffer = (void *) row.sync_state.c_str();
         bindParams[9].buffer_length = sizeof(row.sync_state);
         if (mysql_stmt_bind_param(stmt, bindParams) != 0) {
             printf("Failed to bind parameters in row : Error: %s\n", mysql_stmt_error(stmt));
@@ -109,15 +109,15 @@ void sql_access::print() {
 
 void sql_access::sql_row::print() {
     printf("%d\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", id,
-           device_id,
-           device_desc,
-           res_group,
-           res_desc,
-           dept,
-           routing_id,
-           operation_id,
-           duration,
-           sync_state);
+           device_id.c_str(),
+           device_desc.c_str(),
+           res_group.c_str(),
+           res_desc.c_str(),
+           dept.c_str(),
+           routing_id.c_str(),
+           operation_id.c_str(),
+           duration.c_str(),
+           sync_state.c_str());
 }
 
 sql_access::sql_access(MYSQL *newconn) : conn(newconn) {
@@ -141,15 +141,15 @@ int sql_access::All_write() {
 sql_access::sql_row::sql_row(unsigned int id, char *deviceId, char *deviceDesc, char *resGroup, char *resDesc,
                              char *dept, char *routingId, char *operationId, char *duration, char *syncState) {
     this->id = id;
-    strcpy(this->device_id, deviceId);
-    strcpy(this->device_desc, deviceDesc);
-    strcpy(this->res_group, resGroup);
-    strcpy(this->res_desc, resDesc);
-    strcpy(this->dept, dept);
-    strcpy(this->routing_id, routingId);
-    strcpy(this->operation_id, operationId);
-    strcpy(this->duration, duration);
-    strcpy(this->sync_state, syncState);
+    this->device_id = deviceId;
+    this->device_desc = deviceDesc;
+    this->res_group = resGroup;
+    this->res_desc = resDesc;
+    this->dept = dept;
+    this->routing_id = routingId;
+    this->operation_id = operationId;
+    this->duration = duration;
+    this->sync_state = syncState;
 }
 
 

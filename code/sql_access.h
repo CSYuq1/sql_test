@@ -21,15 +21,15 @@ protected:
         CONST unsigned int row_num = 10;//记录字段的数量
         const unsigned int getRowNum() const;
         unsigned int id;//主键
-        char device_id[255];//设备id
-        char device_desc[255];//设备描述
-        char res_group[255];//组
-        char res_desc[255];//组描述
-        char dept[255];//部门
-        char routing_id[255];//工艺id
-        char operation_id[255];//工序id
-        char duration[255];//时长
-        char sync_state[255];//同步状态
+        string device_id;//设备id
+        string device_desc;//设备描述
+        string res_group;//组
+        string res_desc;//组描述
+        string dept;//部门
+        string routing_id;//工艺id
+        string operation_id;//工序id
+        string duration;//时长
+       string sync_state;//同步状态
         sql_row(unsigned int id, char *deviceId, char *deviceDesc, char *resGroup, char *resDesc, char *dept,
                 char *routingId, char *operationId, char *duration, char *syncState);
 
