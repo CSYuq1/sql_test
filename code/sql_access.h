@@ -16,33 +16,10 @@ using namespace std;
 class sql_access {
 protected:
     class sql_row {
+
     public:
-        unsigned int getId() ;
-
-        const char *getDeviceId() ;
-
-        const char *getDeviceDesc() ;
-
-        const char *getResGroup() ;
-
-        const char *getResDesc() ;
-
-        const char *getDept() ;
-
-        const char *getRoutingId() ;
-
-        const char *getOperationId() ;
-
-        const char *getDuration() ;
-
-        const char *getSyncState() ;
-
-    private:
-        CONST unsigned int row_num=10 ;//记录字段的数量
-    public:
+        CONST unsigned int row_num = 10;//记录字段的数量
         const unsigned int getRowNum() const;
-
-    private:
         unsigned int id;//主键
         char device_id[255];//设备id
         char device_desc[255];//设备描述
@@ -53,12 +30,12 @@ protected:
         char operation_id[255];//工序id
         char duration[255];//时长
         char sync_state[255];//同步状态
-    public:
         sql_row(unsigned int id, char *deviceId, char *deviceDesc, char *resGroup, char *resDesc, char *dept,
                 char *routingId, char *operationId, char *duration, char *syncState);
 
         void print();
     };
+
     MYSQL *conn;
     MYSQL_RES *DEFAULT_RES;
     vector<sql_row> rows;//将读取的row存入此处
@@ -80,6 +57,7 @@ public:
     int All_read();
 
     int All_write(vector<sql_row> input_rows);
+
     int All_write();
 };
 

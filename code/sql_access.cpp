@@ -50,39 +50,39 @@ int sql_access::All_write(vector<sql_row> input_rows) {
     MYSQL_BIND bindParams[10];
     memset(bindParams, 0, sizeof(bindParams));
     bindParams[0].buffer_type = MYSQL_TYPE_LONG;
-    for(int i=1;i<10;i++)
+    for (int i = 1; i < 10; i++)
         bindParams[i].buffer_type = MYSQL_TYPE_STRING;
     for (auto row: input_rows) {
         unsigned int id = row.getId();
         bindParams[0].buffer = (void *) &id;
-        bindParams[0].buffer_length = sizeof(row.getId());
+        bindParams[0].buffer_length = sizeof(row.id);
         //char *device_id;//设备id
-        bindParams[1].buffer = (void *) row.getDeviceId();
-        bindParams[1].buffer_length = sizeof(row.getDeviceId());
+        bindParams[1].buffer = (void *) row.device_id();
+        bindParams[1].buffer_length = sizeof(row.device_id);
         //char *device_desc;//设备描述
-        bindParams[2].buffer = (void *) row.getDeviceDesc();
-        bindParams[2].buffer_length = sizeof(row.getDeviceDesc());
+        bindParams[2].buffer = (void *) row.device_desc;
+        bindParams[2].buffer_length = sizeof(row.device_desc);
         //char *res_group;//组
-        bindParams[3].buffer = (void *) row.getResGroup();
-        bindParams[3].buffer_length = sizeof(row.getResGroup());
+        bindParams[3].buffer = (void *) row.res_group;
+        bindParams[3].buffer_length = sizeof(row.res_group);
         //char *res_desc;//组描述
         bindParams[4].buffer = (void *) row.getResDesc();
         bindParams[4].buffer_length = sizeof(row.getResDesc());
         //char *dept;//部门
-        bindParams[5].buffer = (void *) row.getDept();
-        bindParams[5].buffer_length = sizeof(row.getDept());
+        bindParams[5].buffer = (void *) row.dept;
+        bindParams[5].buffer_length = sizeof(row.dept);
         //char *routing_id;//工艺id
-        bindParams[6].buffer = (void *) row.getRoutingId();
-        bindParams[6].buffer_length = sizeof(row.getRoutingId());
+        bindParams[6].buffer = (void *) row.routing_id;
+        bindParams[6].buffer_length = sizeof(row.routing_id);
         // char *operation_id;//工序id
-        bindParams[7].buffer = (void *) row.getOperationId();
-        bindParams[7].buffer_length = sizeof(row.getOperationId());
+        bindParams[7].buffer = (void *) row.operation_id;
+        bindParams[7].buffer_length = sizeof(row.operation_id);
         //char *duration;//时长
-        bindParams[8].buffer = (void *) row.getDuration();
-        bindParams[8].buffer_length = sizeof(row.getDuration());
+        bindParams[8].buffer = (void *) row.duration;
+        bindParams[8].buffer_length = sizeof(row.duration);
         //char *sync_state;//同步状态
-        bindParams[9].buffer = (void *) row.getSyncState();
-        bindParams[9].buffer_length = sizeof(row.getSyncState());
+        bindParams[9].buffer = (void *) row.sync_state;
+        bindParams[9].buffer_length = sizeof(row.sync_state);
         if (mysql_stmt_bind_param(stmt, bindParams) != 0) {
             printf("Failed to bind parameters in row : Error: %s\n", mysql_stmt_error(stmt));
             mysql_stmt_close(stmt);
@@ -150,50 +150,6 @@ sql_access::sql_row::sql_row(unsigned int id, char *deviceId, char *deviceDesc, 
     strcpy(this->operation_id, operationId);
     strcpy(this->duration, duration);
     strcpy(this->sync_state, syncState);
-}
-
-unsigned int sql_access::sql_row::getId() const {
-    return id;
-}
-
-const char *sql_access::sql_row::getDeviceId() const {
-    return device_id;
-}
-
-const char *sql_access::sql_row::getDeviceDesc() const {
-    return device_desc;
-}
-
-const char *sql_access::sql_row::getResGroup() const {
-    return res_group;
-}
-
-const char *sql_access::sql_row::getResDesc() const {
-    return res_desc;
-}
-
-const char *sql_access::sql_row::getDept() const {
-    return dept;
-}
-
-const char *sql_access::sql_row::getRoutingId() const {
-    return routing_id;
-}
-
-const char *sql_access::sql_row::getOperationId() const {
-    return operation_id;
-}
-
-const char *sql_access::sql_row::getDuration() const {
-    return duration;
-}
-
-const char *sql_access::sql_row::getSyncState() const {
-    return sync_state;
-}
-
-const unsigned int sql_access::sql_row::getRowNum() const {
-    return row_num;
 }
 
 
