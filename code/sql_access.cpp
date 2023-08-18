@@ -53,11 +53,11 @@ int sql_access::All_write(vector<sql_row> input_rows) {
     for (int i = 1; i < 10; i++)
         bindParams[i].buffer_type = MYSQL_TYPE_STRING;
     for (auto row: input_rows) {
-        unsigned int id = row.getId();
+        unsigned int id = row.id;
         bindParams[0].buffer = (void *) &id;
         bindParams[0].buffer_length = sizeof(row.id);
         //char *device_id;//设备id
-        bindParams[1].buffer = (void *) row.device_id();
+        bindParams[1].buffer = (void *) row.device_id;
         bindParams[1].buffer_length = sizeof(row.device_id);
         //char *device_desc;//设备描述
         bindParams[2].buffer = (void *) row.device_desc;
@@ -66,8 +66,8 @@ int sql_access::All_write(vector<sql_row> input_rows) {
         bindParams[3].buffer = (void *) row.res_group;
         bindParams[3].buffer_length = sizeof(row.res_group);
         //char *res_desc;//组描述
-        bindParams[4].buffer = (void *) row.getResDesc();
-        bindParams[4].buffer_length = sizeof(row.getResDesc());
+        bindParams[4].buffer = (void *) row.res_desc;
+        bindParams[4].buffer_length = sizeof(row.res_desc);
         //char *dept;//部门
         bindParams[5].buffer = (void *) row.dept;
         bindParams[5].buffer_length = sizeof(row.dept);
