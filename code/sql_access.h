@@ -16,10 +16,10 @@ using namespace std;
 class sql_access {
 protected:
     class sql_row {
-
     public:
         CONST unsigned int row_num = 10;//记录字段的数量
         const unsigned int getRowNum() const;
+
         unsigned int id;//主键
         string device_id;//设备id
         string device_desc;//设备描述
@@ -29,7 +29,7 @@ protected:
         string routing_id;//工艺id
         string operation_id;//工序id
         string duration;//时长
-       string sync_state;//同步状态
+        string sync_state;//同步状态
         sql_row(unsigned int id, char *deviceId, char *deviceDesc, char *resGroup, char *resDesc, char *dept,
                 char *routingId, char *operationId, char *duration, char *syncState);
 
@@ -41,7 +41,7 @@ protected:
     vector<sql_row> rows;//将读取的row存入此处
 public:
     CONST CHAR *DEFAULT_READ_QUERY = "SELECT * FROM read_test";
-    CONST CHAR *DEFAULT_WRITE_PREPARE = "INSERT INTO write_test (id,device_desc,res_group,res_desc,dept,routing_id,operation_id,duration,sync_state) VALUES (  ? , ? , ? , ? , ?, ? , ? , ? , ? )";//10个参数的预处理语句
+    CONST CHAR *DEFAULT_WRITE_PREPARE ="INSERT INTO write_test (id,device_id,device_desc,res_group,res_desc,dept,routing_id,operation_id,duration,sync_state) VALUES (%d,'%s','%s','%s','%s','%s','%s','%s','%s','%s')";//10个参数的预处理语句
 
     sql_access(MYSQL *newconn);
 

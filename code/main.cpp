@@ -2,9 +2,11 @@
 #include <mysql.h>
 #include"Sql_print.h"
 #include"sql_access.h"
+
 using namespace std;
+
 int main() {
-    MYSQL *conn = mysql_init(nullptr);//��ʼ�����Ӷ���
+    MYSQL *conn = mysql_init(nullptr);//????????????
     if (conn == nullptr) {
         printf("mysql_init() error\n");
         return -1;
@@ -20,7 +22,7 @@ int main() {
         printf("mysql_real_connect() error\n");
         return -1;
     }
-    auto *ac =new sql_access(conn);
+    auto *ac = new sql_access(conn);
     ac->All_read();
     ac->print();
     ac->All_write();
