@@ -11,16 +11,17 @@ int sql_access::All_read(MYSQL_RES *res) {
     rows.reserve(mysql_num_rows(res));
     while ((row = mysql_fetch_row(res)) != nullptr) {
 
-        rows.emplace_back(stoi(row[0]),
-                          row[1],
-                          row[2],
-                          row[3],
-                          row[4],
-                          row[5],
-                          row[6],
-                          row[7],
-                          row[8],
-                          row[9]);
+        sql_row data_row(stoi(row[0]),
+                         row[1],
+                         row[2],
+                         row[3],
+                         row[4],
+                         row[5],
+                         row[6],
+                         row[7],
+                         row[8],
+                         row[9]);
+        rows.emplace_back(data_row);
     }
     return 0;
 }
@@ -49,15 +50,8 @@ int sql_access::All_write(vector<sql_row> input_rows) {
     MYSQL_BIND bindParams[10];
     memset(bindParams, 0, sizeof(bindParams));
     bindParams[0].buffer_type = MYSQL_TYPE_LONG;
-    bindParams[1].buffer_type = MYSQL_TYPE_STRING;
-    bindParams[2].buffer_type = MYSQL_TYPE_STRING;
-    bindParams[3].buffer_type = MYSQL_TYPE_STRING;
-    bindParams[4].buffer_type = MYSQL_TYPE_STRING;
-    bindParams[5].buffer_type = MYSQL_TYPE_STRING;
-    bindParams[6].buffer_type = MYSQL_TYPE_STRING;
-    bindParams[7].buffer_type = MYSQL_TYPE_STRING;
-    bindParams[8].buffer_type = MYSQL_TYPE_STRING;
-    bindParams[9].buffer_type = MYSQL_TYPE_STRING;
+    for(int i=1;i<10;i++)
+        bindParams[i].buffer_type = MYSQL_TYPE_STRING;
     for (auto row: input_rows) {
         unsigned int id = row.getId();
         bindParams[0].buffer = (void *) &id;
